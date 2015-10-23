@@ -10,7 +10,7 @@ public class fileSplit
 	String inpFile;
 	byte[] chunkarr;
 	FileInputStream f = null;
-	private static int chunkSize = 100;
+	private static int chunkSize = 1024*1024;
  	public fileSplit(String inpFile)
 	{
 		this.inpFile = inpFile;
@@ -30,7 +30,7 @@ public class fileSplit
 			{
 				try
 				{
-					File n = new File("C:/UF_study/Computer Networks/Project", "video" + String.valueOf(counter) + ".MP4");
+					File n = new File("C:/UF_study/Computer Networks/Project/Code", "test" + String.valueOf(counter) + ".M4a");
 					FileOutputStream fo = new FileOutputStream(n);
 					fo.write(chunkarr, 0, x);
 					counter++;
@@ -49,12 +49,12 @@ public class fileSplit
 				}
 
 	}
-
-
 	public static void main(String args[]) throws IOException
 	{
-		fileSplit f = new fileSplit("video.MP4");
+		fileSplit f = new fileSplit("test.M4a");
 		f.readInpFile();
+		clientOne co = new clientOne(1111, "localhost");
+		co.oneFunction();
 	}
 }
 
