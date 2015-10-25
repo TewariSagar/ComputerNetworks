@@ -33,7 +33,7 @@ public class owner extends Thread
 			}
 		}
 	}
-	public static void main(String args[])
+	public static void main(String args[])  throws IOException
 	{
 		try
 		{
@@ -44,5 +44,8 @@ public class owner extends Thread
 		{
 			e.printStackTrace();
 		}
+		fileSplit f = new fileSplit("test.M4a");
+		f.readInpFile();
+		f.printHashMap();
 	}
 }

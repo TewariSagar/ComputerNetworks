@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
 
 public class fileSplit
 {
@@ -11,8 +13,10 @@ public class fileSplit
 	byte[] chunkarr;
 	FileInputStream f = null;
 	private static int chunkSize = 1024*1024;
+	HashMap<String, Integer> h = new HashMap<String, Integer>();
  	public fileSplit(String inpFile)
 	{
+		System.out.println("Owner is splitting the file......");
 		this.inpFile = inpFile;
 	}
 
@@ -33,8 +37,9 @@ public class fileSplit
 					File n = new File("C:/UF_study/Computer Networks/Project/Code", "test" + String.valueOf(counter) + ".M4a");
 					FileOutputStream fo = new FileOutputStream(n);
 					fo.write(chunkarr, 0, x);
+					String value_string = "test" + String.valueOf(counter) + ".M4a";
+					h.put(value_string , counter);
 					counter++;
-					System.out.println("Created a file");
 				}
 				catch(IOException ex)
 				{
@@ -43,19 +48,20 @@ public class fileSplit
 			}
 			f.close();
 		}
-		catch(IOException ex)
+				catch(IOException ex)
 				{
 					System.out.println(ex.toString());
 				}
 
 	}
-	public static void main(String args[]) throws IOException
+
+	public void printHashMap()
 	{
-		fileSplit f = new fileSplit("test.M4a");
-		f.readInpFile();
-		clientOne co = new clientOne(1111, "localhost");
-		co.oneFunction();
+		Set<String> keys = h.keySet();
+		for (String key : keys)
+	    System.out.println(key + " " +h.get(key));
 	}
+	
 }
 
 

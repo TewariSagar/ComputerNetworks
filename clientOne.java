@@ -28,5 +28,10 @@ private Socket firstClient;
 			e.printStackTrace();
 		}
 	}
+	public static void main(String args[])
+	{
+		clientOne co = new clientOne(1111, "localhost");
+		co.oneFunction();
+	}
 
 }
