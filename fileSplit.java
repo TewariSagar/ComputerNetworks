@@ -59,7 +59,7 @@ public class fileSplit
 	{
 		Set<String> keys = h.keySet();
 		for (String key : keys)
-	    System.out.println(key + " " +h.get(key));
+	    System.out.println(key + " " + h.get(key));
 	}
 	
 }

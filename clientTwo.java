@@ -1,36 +1,35 @@
 import java.io.*;
 import java.net.*;
 
-public class clientOne
+public class clientTwo
 {
-	private Socket firstClient;
+private Socket secondClient;
 	//(int ownerPort, String ownerName, int uploadNeighbour, int downloadNeighbour)
-	public clientOne(int ownerPort, String ownerName)
+
+	public clientTwo(int ownerPort, String ownerName)
 	{
 		try
 		{
-			firstClient = new Socket(ownerName, ownerPort);
+			secondClient = new Socket(ownerName, ownerPort);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-	
-	}
-	
 
-	public void oneFunction()
+	}
+	public void twoFunction()
 	{
 		try
 		{
-			System.out.println("Connection established to localhost: " + firstClient.getRemoteSocketAddress());
-			OutputStream os = firstClient.getOutputStream();
+			System.out.println("Connection established to localhost: " + secondClient.getRemoteSocketAddress());
+			OutputStream os = secondClient.getOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(os);
-			checkClient to = new checkClient(1,"object from client");
+			checkClient to = new checkClient(2,"object from client");
 			oos.writeObject(to);
 			oos.close();
 			os.close();
-			firstClient.close();
+			secondClient.close();
 		}
 		catch(Exception e)
 		{
@@ -40,9 +39,8 @@ public class clientOne
 	public static void main(String args[])
 	{
 		//update for (int ownerPort, String ownerName, int uploadNeighbour, int downloadNeighbour)
-		clientOne co = new clientOne(1111, "localhost");
-		co.oneFunction();
-		
+		clientTwo co = new clientTwo(1111, "localhost");
+		co.twoFunction();
 	}
 
 }
