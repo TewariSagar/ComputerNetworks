@@ -13,7 +13,7 @@ public class fileSplit
 	byte[] chunkarr;
 	FileInputStream f = null;
 	private static int chunkSize = 1024*1024;
-	HashMap<String, Integer> h = new HashMap<String, Integer>();
+	HashMap<Integer, String> h = new HashMap<Integer, String>();
  	public fileSplit(String inpFile)
 	{
 		System.out.println("Owner is splitting the file......");
@@ -38,7 +38,7 @@ public class fileSplit
 					FileOutputStream fo = new FileOutputStream(n);
 					fo.write(chunkarr, 0, x);
 					String value_string = "test" + String.valueOf(counter) + ".M4a";
-					h.put(value_string , counter);
+					h.put(counter, value_string);
 					counter++;
 				}
 				catch(IOException ex)
@@ -57,8 +57,8 @@ public class fileSplit
 
 	public void printHashMap()
 	{
-		Set<String> keys = h.keySet();
-		for (String key : keys)
+		Set<Integer> keys = h.keySet();
+		for (Integer key : keys)
 	    System.out.println(key + " " + h.get(key));
 	}
 	

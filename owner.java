@@ -30,8 +30,6 @@ public class owner extends Thread
 				//int value = 
 				//hashmap to KEY: IP ADDRESS, VALUE: name of peer
 				//hs.put(var , value);
-				//switch()
-				//need a switch case badly................................
 				InputStream is = ownerSocket.getInputStream();
 				ObjectInputStream ois = new ObjectInputStream(is);
 				checkClient to = (checkClient)ois.readObject();
@@ -48,10 +46,12 @@ public class owner extends Thread
 						{
 							case 1:
 							System.out.println("Peer 1 connected");
+							(new Thread(new clientOne())).start();
 							break;
 
 							case 2:
 							System.out.println("Peer 2 connected");
+							(new Thread(new clientTwo())).start();
 							break;
 						}
 					}
@@ -88,7 +88,7 @@ public class owner extends Thread
 	{
 		fileSplit f = new fileSplit("test.M4a");
 		f.readInpFile();
-		//f.printHashMap();
+		f.printHashMap();
 		// main thread to look for peer connections
 		try
 		{
